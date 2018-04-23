@@ -1,5 +1,7 @@
 # district-ui-component-meta-tags
 
+[![Build Status](https://travis-ci.org/district0x/district-ui-component-meta-tags.svg?branch=master)](https://travis-ci.org/district0x/district-ui-component-meta-tags)
+
 Clojurescript [mount](https://github.com/tolitius/mount) + [re-frame](https://github.com/Day8/re-frame) component for a district UI, that provides [reagent](https://github.com/reagent-project/reagent) UI component for serving html meta-tags for SEO.
 
 ## Installation
@@ -9,7 +11,7 @@ Include `[district.ui.component.meta-tags]` in your CLJS file.
 
 ## Usage
 
-#### district.ui.component.meta-tags
+#### <a name="district.ui.component.meta-tags"> `district.ui.component.meta-tags`
 This namespace contains reagent UI component to add meta tags.<br/>
 <br/>
 Basic usage:
@@ -27,7 +29,7 @@ Basic usage:
 ```
 
 This will set the page title to *"My District"* and the content of the *description* meta tag.
-You can also pass additional custom meta-tags by adding more maps with and `:id`, `:name` and `:coontent` after the `:title` and `:description` map:
+You can also pass additional custom meta-tags by adding more maps with and `:id`, `:name` and `:content` keys, after the `:title` and `:description` map:
 
 ```clojure
 [meta-tags/meta-tags {:title "title" :description "description"}
