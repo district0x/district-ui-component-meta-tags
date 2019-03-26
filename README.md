@@ -6,7 +6,10 @@ Clojurescript [mount](https://github.com/tolitius/mount) + [re-frame](https://gi
 
 ## Installation
 
-Add `[district0x/district-ui-component-meta-tags "1.0.0"]` into your project.clj.<br/>
+Add <br>
+[![Clojars Project](https://img.shields.io/clojars/v/district0x/district-ui-component-meta-tags.svg)](https://clojars.org/district0x/district-ui-component-meta-tags) <br>
+into your project.clj.<br/>
+
 Include `[district.ui.component.meta-tags]` in your CLJS file.
 
 ## Usage
