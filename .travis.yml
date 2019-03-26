@@ -5,11 +5,22 @@ script: lein doo chrome "tests" once
 addons:
   chrome: stable
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 notifications:
-  email:
-    recipients:
-      - filip@district0x.io
-    on_success: change
+  slack:
+    on_success: always
     on_failure: always
+    rooms:
+    - district0x:53vhalUfg0MitsQwzjP5PWdd#travis-ci
+  email: false
+env:
+  global:
+  - secure: nhQSRVp+x4zpOd8ATxtiRMNcK2L6ppLsnEwUQPCNRhVGeJBsYec5dEtrY0ehaGvUVfo3sUvR2H0KTexI9vFHngqXXc+y/Bp2Jc1SvKACjVziW/dFKW6uyBiA+ip1hLqNjhUzPEvHRVQia/L6WChY1gGNHoInxryE9heafQ6W2GM3TnkqVeoZp8ivtsSi8aW1bRk1RyUpxCMN0xlGoMq+54M1TiPwLO89DFj7YW5tt2RMGFp4TyHHIvVmZGNnUg6/OtVwe9zTqmHL/xqriFbUaLDpzJsOeSOZtEp0/l17RVbru3JJnlV73RMWHnJfXe+SSjUckS11Ikr0F9WsBkaxpEnouVh7fguiY5vRuXkdddM6RWNXP2GzpDCyK4NWF9BBqJOftvCT27VZUvQhvq/0BTw0tp15Xr6qBZbHPmHpmtV55j+uMnNQItOQAQaiysA8iwPcMiMwsh3HeelPeAyegpkZvO8+tgwKHrXy1UjVW7LCEdSl9tDJ/VcUWN7DGCuhK3yO4Ahy38r04t/wKkcNw0kegAEtwIty4TL5ybcBBMxOQYxPkegIg/gFS4eNAxjy6N4OglQI7CXKYovALFku7aMQ1P6YKOzMtDR5d56K6ENPlLDPpb0f2HeLbjU6W03oroheXucYK752eloCeivYZ30lvvhU+wfFT5/9lK+HFII=
+  - secure: q+/jixIp4OCXiRBWkhJlIdoU/GvIImAWM1J8fp/Xpj3jD5yr82oarG51yKd3Tzt77aqppWCwUdFlYhXfJrWjmw8UZveKx4F/fgTMUBvV+JGo+yZ97rydC7yWWXhjZLXZRJWbKtN/whtULFtxHXcj6JllefpGtFtPvDAJSh0ko+qiGddEPVhhJ+QmqlC42+XpKenumPr1EkuEEiIW/vJyuL3goPyQRGKgzRdFvyu04NBKt88Ug+Oq1J8pbEYrMz9yCaWtBoQdIrBF6neFZw62BMXpXHbaQxpnMoM2xNo3Cw6NXYE93AlvdXtUk9+WMShSd/cgTWmWey8FEqdm6qXl0LF9gV3Z8i1CJQ+uEjH9E/VVCsZEYSUB1QpSB0CbaVc+gyjJZHY7onBpI8a3nZnm9Pnz6ZQ+ccAVybJam6K5W2KvaIYsQlBrSBhPgEj6bz/Rn9YBUk9DQ7pvwkRnql9eb/cCkjqPIq9SMgXCVztGvgA4omnWnJmf7G0M7hzUtT53pwyUwB0wb1L/8yrRF6xh4lDKUO/Z52wclxQ0cdmxs46Er4w12zFwDkUEtsYk+n2+aVl35K8gt56XwyxVGHyYqqixvYlB8+nSL3b9UUHiOE/CKvsGkoCzPYWKm1K4y8hXUGGxKDkGjeXQ2MDs3UpFqTYNpREYhHpRPZC2KoHGaNc=  
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: lein release :patch
+  on:
+    branch: master

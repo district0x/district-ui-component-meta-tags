@@ -1,4 +1,4 @@
-(defproject district0x/district-ui-component-meta-tags "1.0.0"
+(defproject district0x/district-ui-component-meta-tags "1.0.0-SNAPSHOT"
   :description "district UI component for serving meta-tags"
   :url "https://github.com/district0x/district-ui-component-meta-tags"
   :license {:name "Eclipse Public License"
@@ -38,4 +38,17 @@
                         :compiler {:output-to "tests-output/tests.js"
                                    :output-dir "tests-output"
                                    :main "tests.runner"
-                                   :optimizations :none}}]})
+                                   :optimizations :none}}]}
+
+  :deploy-repositories [["snapshots" {:url "https://clojars.org/repo"
+                                      :username :env/clojars_username
+                                      :password :env/clojars_password
+                                      :sign-releases false}]
+                        ["releases"  {:url "https://clojars.org/repo"
+                                      :username :env/clojars_username
+                                      :password :env/clojars_password
+                                      :sign-releases false}]]
+
+  :release-tasks [["vcs" "assert-committed"]
+                  ["change" "version" "leiningen.release/bump-version" "release"]
+                  ["deploy"]])

@@ -1,7 +1,6 @@
 (ns district.ui.component.meta-tags
   (:require [reagent.core :as r]
-            [cljsjs.react-meta-tags]
-            [re-frame.core :refer [subscribe]]))
+            [cljsjs.react-meta-tags]))
 
 (def ^:private react-meta-tags (r/adapt-react-class (aget js/MetaTags "default")))
 
